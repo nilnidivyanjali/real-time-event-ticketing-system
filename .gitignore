@@ -1,0 +1,22 @@
+# Java / Spring Boot
+*.class
+*.jar
+*.war
+target/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Node.js / Angular
+node_modules/
+dist/
+.env
+
+# Logs
+*.log
+logs/
+
+# OS Files
+.DS_Store
+Thumbs.db
