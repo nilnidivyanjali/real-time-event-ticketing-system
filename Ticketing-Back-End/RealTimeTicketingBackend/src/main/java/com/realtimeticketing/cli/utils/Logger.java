@@ -1,4 +1,4 @@
-package utils;
+package com.realtimeticketing.cli.utils;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -6,19 +6,12 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-/**
- * A utility class for logging system messages to both the console and the log file.
- */
-public class Logger {
 
+public class Logger {
     private static final String LOG_FILE_PATH = "system.log"; // Logging file path
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-    /**
-     * Logs a message with a timestamp to the console and appends it to a log file.
-     *
-     * @param message This is the message to be logged.
-     */
+    // Log a message to the console and file
     public static void log(String message) {
         String timestampedMessage = "[" + LocalDateTime.now().format(DATE_FORMATTER) + "]" + message;
 

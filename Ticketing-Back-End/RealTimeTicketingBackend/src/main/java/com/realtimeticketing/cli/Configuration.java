@@ -1,11 +1,14 @@
+package com.realtimeticketing.cli;
+
 import com.google.gson.Gson;
+
 import java.io.*;
 
 /**
- * Represents a configuration for a ticketing system, including total tickets,release rate, retrieval rate, and capacity.
+ * Representing the system configuration for a ticketing application.
+ * Providing methods to save and load configuration data in JSON and plain text formats.
  */
 public class Configuration {
-
     private int totalTickets;
     private int ticketReleaseRate;
     private int customerRetrievalRate;
@@ -49,10 +52,9 @@ public class Configuration {
     }
 
     /**
-     * Saving configuration to a JSON file through serialization.
-     *
+     * Saves the configuration to a JSON file through serialization.
      * @param filePath This is the path to the JSON file.
-     * @throws IOException if an I/O error occurs.
+     * @throws IOException If an I/O error occurs.
      */
     public void exportToJson(String filePath) throws IOException {
         Gson gson = new Gson();
@@ -63,11 +65,10 @@ public class Configuration {
     }
 
     /**
-     * Imports a configuration from a JSON file.
-     *
+     * Loads the configuration from a JSON file.
      * @param filePath This is the path to the JSON file.
-     * @return the imported configuration.
-     * @throws IOException if an I/O error occurs.
+     * @return Loaded configuration object.
+     * @throws IOException If an I/O error occurs.
      */
     public static Configuration importFromJson(String filePath) throws IOException {
         Gson gson = new Gson();
@@ -78,14 +79,13 @@ public class Configuration {
     }
 
     /**
-     * Saving configuration to a plain text file.
-     *
-     * @param filePath This is the path to the text file.
-     * @throws IOException if  an I/O error occurs.
+     * Saving the configuration to a plain text file.
+     * @param filePath This is the path to the plain text file.
+     * @throws IOException If an I/O error occurs.
      */
     public void exportToText(String filePath) throws IOException {
-
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+
             writer.write("Total Tickets: " + totalTickets + "\n");
             writer.write("Ticket Release Rate: " + ticketReleaseRate + "\n");
             writer.write("Customer Retrieval Rate: " + customerRetrievalRate + "\n");
@@ -94,15 +94,14 @@ public class Configuration {
     }
 
     /**
-     * Loading configuration from a plain text file.
-     *
-     * @param filePath This is the path to the text file.
-     * @return the imported configuration.
-     * @throws IOException if an I/O error occurs.
+     * Loading the configuration from a plain text file.
+     * @param filePath This is the path to the plain text file.
+     * @return Loaded configuration object.
+     * @throws IOException If an I/O error occurs.
      */
     public static Configuration importFromText(String filePath) throws IOException {
-
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+
             int totalTickets = Integer.parseInt(reader.readLine().split(": ")[1]);
             int ticketReleaseRate = Integer.parseInt(reader.readLine().split(": ")[1]);
             int customerRetrievalRate = Integer.parseInt(reader.readLine().split(": ")[1]);

@@ -9,23 +9,16 @@ public class Customer implements Runnable {
     private final String customerId;
     private final int retrievalInterval; // Time interval between ticket purchases
 
-    // Constructors
     public Customer(String customerId, TicketPool ticketPool, int retrievalInterval){
-
         this.customerId = customerId;
         this.ticketPool = ticketPool;
         this.retrievalInterval = retrievalInterval;
     }
 
 
-    /**
-     * Continuously attempts to purchase tickets from the ticket pool.
-     * If the pool is empty, the customer waits for tickets to become available.
-     */
     @Override
     public void run(){
-        while (true){
-            // Simulating continuous ticket purchase attempts
+        while (true){ // Simulating continuous ticket purchase attempts
             synchronized (ticketPool){
                 while (ticketPool.getPoolSize() == 0) {
 

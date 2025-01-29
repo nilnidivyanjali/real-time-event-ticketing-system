@@ -1,0 +1,12 @@
+
+<div class="container mt-3">
+  <h3>Ticket Status</h3>
+  <ul class="list-group">
+    <li class="list-group-item" *ngIf="ticketStatus">
+      Pool Size: {{ ticketStatus.poolSize }}
+    </li>
+    <!-- <li class="list-group-item" *ngFor="let ticket of ticketStatus.tickets">
+      {{ ticket.ticketId }}: {{ ticket.eventName }} (${{ ticket.ticketPrice }})
+    </li> -->
+  </ul>
+</div>

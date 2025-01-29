@@ -47,14 +47,11 @@ public class Ticket {
         this.ticketPrice = ticketPrice;
     }
 
-    /**
-     * Provides a string representation of the ticket details.
-     *
-     * @return A formatted string with ticket ID,event name, and price.
-     */
+
+
+    // Displaying ticket details
     @Override
     public String toString() {
-
         return "Ticket Details:\n"+
                 "Ticket ID: " + ticketId + "\n" +
                 "Event Name: " + eventName + "\n" +

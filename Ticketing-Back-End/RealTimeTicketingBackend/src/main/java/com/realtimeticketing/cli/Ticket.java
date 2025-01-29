@@ -1,5 +1,7 @@
+package com.realtimeticketing.cli;
+
 /**
- * Represents a ticket with a ticket ID, event name, and price.
+ * Represents a ticket with a ticket id, event name, and price.
  */
 public class Ticket {
     private String ticketId;
@@ -40,21 +42,20 @@ public class Ticket {
     }
 
     public void setTicketPrice(double ticketPrice) {
-
         if (ticketPrice < 0) {
             throw new IllegalArgumentException("Ticket price cannot be negative.");
         }
         this.ticketPrice = ticketPrice;
     }
 
+
+
     /**
-     * Provides a string representation of the ticket details.
-     *
-     * @return A formatted string with ticket ID,event name, and price.
+     * Returns a string representation of the ticket details.
+     * @return a string containing the ticket details.
      */
     @Override
     public String toString() {
-
         return "Ticket Details:\n"+
                 "Ticket ID: " + ticketId + "\n" +
                 "Event Name: " + eventName + "\n" +

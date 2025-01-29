@@ -1,10 +1,14 @@
-import utils.Logger;
+package com.realtimeticketing.cli;
+
+import com.realtimeticketing.cli.utils.Logger;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 /**
- * Represents a thread-safe pool of tickets with synchronized methods to add, remove,and manage tickets.
+ * A thread safe pool for managing tickets with a maximum capacity.
+ * Provides synchronized methods for adding, removing, and displaying tickets.
  */
 public class TicketPool {
     private List<Ticket> ticketPool;      // Thread-safe list to store tickets
@@ -12,21 +16,20 @@ public class TicketPool {
 
     // Constructors
     public TicketPool(int maxCapacity) {
-
         this.maxCapacity = maxCapacity;
         this.ticketPool = Collections.synchronizedList(new ArrayList<>());
     }
 
     /**
-     * Adding a list of tickets to the pool.Waiting if the pool is full.
-     * @param tickets This is the list of tickets to be added.
+     * Adding tickets to the pool. Waiting if the pool is full.
+     * @param tickets This is the list of tickets to add.
      */
     public synchronized void addTickets(List<Ticket> tickets) {
         for (Ticket ticket : tickets) {
             while (ticketPool.size() >= maxCapacity) {
                 try {
                     Logger.log("Pool is full. Waiting to add tickets...");
-                    wait(); // Waiting until a space in the pool.
+                    wait(); // wait until there is space in the pool.
                 } catch (InterruptedException e) {
                     Logger.log("Interrupted while waiting to add tickets.");
                     return;
@@ -40,7 +43,7 @@ public class TicketPool {
 
     /**
      * Removing a ticket from the pool. Waiting if no tickets are available.
-     * @return the removed ticket,or null if interrupted while waiting.
+     * @return the removed ticket, or null if interrupted.
      */
     public synchronized Ticket removeTicket() {
 
@@ -60,7 +63,7 @@ public class TicketPool {
     }
 
     /**
-     * Getting the current size of the ticket pool.
+     * Retrieving the current size of the pool.
      * @return the number of tickets currently in the pool.
      */
     public synchronized int getPoolSize() {
@@ -68,18 +71,17 @@ public class TicketPool {
     }
 
     /**
-     * Getting the maximum capacity of the ticket pool.
-     * @return the maximum capacity of the pool.
+     * Retrieving the maximum capacity of the pool.
+     * @return the maximum number of tickets the pool can hold.
      */
     public int getMaxCapacity() {
         return maxCapacity;
     }
 
     /**
-     * Displaying all the  tickets currently in the pool.
+     * Displaying all tickets currently in the pool.
      */
     public synchronized void displayTickets() {
-
         System.out.println("Current tickets in Pool: ");
         for (Ticket ticket : ticketPool) {
             System.out.println(ticket);

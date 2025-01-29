@@ -92,16 +92,8 @@ public class Configuration {
             writer.write("Maximum Ticket Capacity: " + maxTicketCapacity + "\n");
         }
     }
-
-    /**
-     * Loading configuration from a plain text file.
-     *
-     * @param filePath This is the path to the text file.
-     * @return the imported configuration.
-     * @throws IOException if an I/O error occurs.
-     */
+    // Loading Configuration from plain text file
     public static Configuration importFromText(String filePath) throws IOException {
-
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             int totalTickets = Integer.parseInt(reader.readLine().split(": ")[1]);
             int ticketReleaseRate = Integer.parseInt(reader.readLine().split(": ")[1]);
