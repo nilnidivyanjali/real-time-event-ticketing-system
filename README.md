@@ -172,3 +172,6 @@ The Real-Time Ticketing System is a comprehensive project showcasing multi-threa
 ## Contact
 
 For further support or queries, contact Nilni Ariyarathna.
+
+
+⚠️ This project is **read-only**. Contributions are not accepted.
